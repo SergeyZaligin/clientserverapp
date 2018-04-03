@@ -1,18 +1,17 @@
+
 <template>
-  <h1 class="red">Hello {{ name }}!</h1>
+  <h1>Звёзды: {{ $store.state.stars }}</h1>
 </template>
 
 <script>
-export default {
-  data () {
-    return { name: 'World' }
-  }
-}
-</script>
+import axios from 'axios';
+ axios
+        .get('http://localhost:3000/api/vacations')
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
-<style lang="scss">
-  $color: green;
-  .red {
-    color: $color;
-  }
-</style>
+</script>
